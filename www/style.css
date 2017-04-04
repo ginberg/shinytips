@@ -1,0 +1,14 @@
+#message {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+#login {
+  margin-top: 20px;
+}
+
+.well {
+  padding: 12px;
+  margin-bottom: 5px;
+}
