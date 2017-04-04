@@ -1,7 +1,7 @@
 ## Shiny tips and trics application
 
 This application contains functionality and patterns that I am using frequently using in my apps. You can view it live at
-[my website](www.gerinberg.com/shiny/shinytips)
+[my website](http://www.gerinberg.com/shiny/shinytips)
 
 Functionality:
 
