@@ -7,6 +7,7 @@ shinyServer(function(input, output, session) {
   source('ui.R') #login page
 
   USER <- reactiveValues(Logged = FALSE)
+  INIT <- FALSE
   
   observeEvent(input$.login, {
     
@@ -55,9 +56,17 @@ shinyServer(function(input, output, session) {
   })
   
   # print content of data
-  output$df_contents <- DT::renderDataTable({
+  output$df_contents <- DT::renderDataTable(rownames = FALSE, extensions = 'Buttons',{
     df
-  }, options = list(pageLength = 50, paging = TRUE))
+  }, options = list(pageLength = 50, 
+                    paging = TRUE, 
+                    dom = 'Blfrtip',
+                    buttons = list('csv', 'print', 'pdf',
+                                   list(extend = 'excel', exportOptions = list(columns = ':visible')), 
+                                   list(extend = 'colvis', text='Show/Hide Columns', collectionLayout='fixed two-column')
+                                  )
+                  )
+  )
   
   # plotly content
   output$plot <- renderPlotly({
@@ -68,11 +77,16 @@ shinyServer(function(input, output, session) {
   })
   
   observeEvent(input$showDataTab, {
-    # switch tab if currently on data tab
-    if (input$main == "DataTable"){
-      updateTabsetPanel(session, inputId = 'main',selected = 'Leaflet')
+    if(!INIT){
+      show(selector = "a[data-value=DataTable]")
+      INIT <<- TRUE
+    } else{
+      # switch tab if currently on data tab
+      if (input$main == "DataTable"){
+        updateTabsetPanel(session, inputId = 'main', selected = 'Leaflet')
+      }
+      toggle(selector = "a[data-value=DataTable]")
     }
-    toggle(selector = "a[data-value=DataTable]")
   })
   
   # update the map markers and view on location selectInput changes

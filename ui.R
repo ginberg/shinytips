@@ -47,13 +47,14 @@ uiNormal <- function(){
         sliderInput("distance", "Distance (kms):", min = 0, max = 10000, value = 1000),
         sliderInput("life_exp_m", "Life expectancy male:", min = min(df$male), max = max(df$male), value = c(min(df$male), 60)),
         sliderInput("life_exp_f", "Life expectancy female:", min = min(df$female), max = max(df$female), value = c(min(df$female), 60)),
-        checkboxInput("showDataTab", "Show DataTable Tab", FALSE),
+        checkboxInput("showDataTab", "Show DataTable Tab", TRUE),
         width = 3
       ),
       
       # Show a plot of the generated distribution
       mainPanel(
         tabsetPanel(id='main',
+          tabPanel('Documentation', includeMarkdown('README.Rmd')),
           tabPanel("DataTable", dataTableOutput('df_contents')),
           tabPanel("Leaflet", fluidRow(leafletOutput("map", height = "700px"))), 
           tabPanel("Plotly", fluidRow(plotlyOutput("plot")))
@@ -71,8 +72,18 @@ shinyUI(fluidPage(
     tags$script(type="text/javascript", src = "passwdInputBinding.js")
   ),
   useShinyjs(),
-  
+  HTML("<!-- common header-->
+             <div id='headerSection'>
+             <h1 style='color:white;'>Shiny tips&trics</h1>
+             <span style='font-size: 1.2em'>
+             <span>Created by </span>
+             <a href='http://gerinberg.com'>Ger Inberg</a>
+             &bull;
+             <span>April 2017</span>
+             &bull;
+             <a href='http://gerinberg.com/shiny'>More apps</a> by Ger
+             </span>
+             </div>"),
   div(titlePanel("Shiny tips & tricks"), align = "center"),
-  
   uiOutput("content")
 ))

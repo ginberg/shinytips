@@ -1,0 +1,24 @@
+## Shiny tips and trics application
+
+### Data
+
+The dataset contains the life expectanncy of males and females in different countries in the world. It is based on babies that are born in 2015. I downloaded the dataset from
+[wikipedia](https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy)
+
+
+```{r}
+'data.frame':	171 obs. of  7 variables:
+ $ country   : chr  "Afghanistan" "Albania" "Algeria" "Angola" ...
+ $ region    : chr  "Asia" "Europe" "Africa" "Africa" ...
+ $ population: int  32526562 2896679 39666519 25021974 91818 43416755 3017712 23968973 8544586 9753968 ...
+ $ male      : num  59.3 75.1 73.8 50.9 74.1 72.7 71.6 80.9 79 69.6 ...
+ $ female    : num  61.9 80.7 77.5 54 78.6 79.9 77.7 84.8 83.9 75.8 ...
+ $ lat       : num  33.9 41.2 28 -11.2 17.1 ...
+ $ lon       : num  67.71 20.17 1.66 17.87 -61.8 ...
+```
+
+###  Functionality
+
+* Tab datatable: displays the data and includes export options, show/hide columns
+* Tab Leaflet: displays the data on a map
+* Tab plotly: displays the data in a bar chart using the plotly library
