@@ -22,3 +22,4 @@ The dataset contains the life expectanncy of males and females in different coun
 * Tab datatable: displays the data and includes export options, show/hide columns
 * Tab Leaflet: displays the data on a map
 * Tab plotly: displays the data in a bar chart using the plotly library
+* Tab Contineous update: a plot that is updating every 2 sec using reactive timer

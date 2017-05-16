@@ -74,7 +74,7 @@ shinyServer(function(input, output, session) {
     plot_ly(df, x = ~country, y = ~male, type = 'bar', name = 'Male') %>%
       add_trace(y = ~female, name = 'Female') %>%
       layout(yaxis = list(title = 'Count'), barmode = 'group')
-  })
+  })                                                                                                                                                                                                                                                           
   
   observeEvent(input$showDataTab, {
     if(!INIT){
@@ -100,7 +100,7 @@ shinyServer(function(input, output, session) {
         addCircles(data = df_circle, lng = ~lon, lat = ~lat, weight = 1, radius = ~(input$distance * 1000)) %>% 
         setView(lng = df_circle[1,'lon'], lat = df_circle[1,'lat'], zoom = ZOOM_LEVEL)   # update the center of the map with the location of the selected facility (use current zoom level)
     }
-  })
+  })                                                                    
   
   # When map is clicked, show a popup with info
   observeEvent(input$map_marker_click, {
@@ -108,10 +108,21 @@ shinyServer(function(input, output, session) {
     loc <- df[df$lat == as.numeric(event$lat) & df$lon == as.numeric(event$lng),]
     content <- paste("Country:", loc$country, "<br>", "Male:", loc$male, "<br>", "Female:", loc$female)
     leafletProxy("map") %>% clearPopups() %>% addPopups(event$lng, event$lat, content, layerId = event$id)
-  })
+  })                                                                                                                              
   
   # when sliders are changed, update dropdown
   observeEvent(c(input$life_exp_f, input$life_exp_m), {
     updateSelectInput(session, "location", choices = data()$country)
   })
+  
+  # Reactive timer
+  autoInvalidate <- reactiveTimer(2000)
+  
+  # Generate a new histogram each time the timer fires
+  output$contPlot <- renderPlot({
+    autoInvalidate()
+    hist(rnorm(10), xlab = "Value", main = "Histogram of a random normal distribution with 10 observations")
+  })
+  
+  
 })

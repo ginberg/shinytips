@@ -14,6 +14,7 @@ This application contains functionality and patterns that I am using frequently 
 * Enabling/disabling components with shinyJS package
 * A simple login page
 * Download functionality
+* A contineous updating plot
 
 ### Data
 

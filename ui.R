@@ -20,6 +20,7 @@ uiLogin <- function(){
                                  <li>Enabling/disabling components with shinyJS package</li>
                                  <li>A simple login page</li>
                                  <li>Download functionality</li>
+                                 <li>Contineous updating plot</li>
                                </ul>")
                           )
         )),
@@ -57,7 +58,8 @@ uiNormal <- function(){
           tabPanel('Documentation', includeMarkdown('README.Rmd')),
           tabPanel("DataTable", dataTableOutput('df_contents')),
           tabPanel("Leaflet", fluidRow(leafletOutput("map", height = "700px"))), 
-          tabPanel("Plotly", fluidRow(plotlyOutput("plot")))
+          tabPanel("Plotly", fluidRow(plotlyOutput("plot"))),
+          tabPanel("Contineous update", fluidRow(plotOutput("contPlot")))
         )
       )
     )
