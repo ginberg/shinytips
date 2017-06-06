@@ -116,7 +116,7 @@ shinyServer(function(input, output, session) {
   })
   
   # Reactive timer
-  autoInvalidate <- reactiveTimer(2000)
+  autoInvalidate <- reactiveTimer(3000)
   
   # Generate a new histogram each time the timer fires
   output$contPlot <- renderPlot({

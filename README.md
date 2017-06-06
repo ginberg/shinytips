@@ -15,6 +15,7 @@ This application contains functionality and patterns that I am using frequently 
 * A simple login page
 * Download functionality
 * A contineous updating plot
+* [Google analytics](https://shiny.rstudio.com/articles/google-analytics.html)
 
 ### Data
 

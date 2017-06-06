@@ -21,6 +21,7 @@ uiLogin <- function(){
                                  <li>A simple login page</li>
                                  <li>Download functionality</li>
                                  <li>Contineous updating plot</li>
+                                 <li>Google analytics</li>
                                </ul>")
                           )
         )),
@@ -71,7 +72,8 @@ shinyUI(fluidPage(
   tags$head(
     tags$link(rel="stylesheet", type="text/css",href="style.css"),
     tags$script(type="text/javascript", src = "md5.js"),
-    tags$script(type="text/javascript", src = "passwdInputBinding.js")
+    tags$script(type="text/javascript", src = "passwdInputBinding.js"),
+    tags$script(type="text/javascript", src = "google-analytics.js")
   ),
   useShinyjs(),
   HTML("<!-- common header-->
