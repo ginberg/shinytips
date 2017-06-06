@@ -59,7 +59,7 @@ uiNormal <- function(){
           tabPanel('Documentation', includeMarkdown('README.Rmd')),
           tabPanel("DataTable", dataTableOutput('df_contents')),
           tabPanel("Leaflet", fluidRow(leafletOutput("map", height = "700px"))), 
-          tabPanel("Plotly", fluidRow(plotlyOutput("plot"))),
+          tabPanel("Plotly", fluidRow(plotlyOutput("plot", height = "700px"))),
           tabPanel("Contineous update", fluidRow(plotOutput("contPlot")))
         )
       )

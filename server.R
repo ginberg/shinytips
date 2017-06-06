@@ -71,9 +71,10 @@ shinyServer(function(input, output, session) {
   # plotly content
   output$plot <- renderPlotly({
     df <- data()
-    plot_ly(df, x = ~country, y = ~male, type = 'bar', name = 'Male') %>%
-      add_trace(y = ~female, name = 'Female') %>%
-      layout(yaxis = list(title = 'Count'), barmode = 'group')
+    m <- list(l = 150, r = 0, b = 150, t = 50, pad = 4)
+    plot_ly(df, y = ~country, x = ~male, type = 'bar', name = 'Male') %>%
+      add_trace(x = ~female, name = 'Female') %>%
+      layout(title = "Life expectancy per country", yaxis = list(title = ''), xaxis = list(title = 'Age (years)'), barmode = 'group', margin = m)
   })                                                                                                                                                                                                                                                           
   
   observeEvent(input$showDataTab, {
