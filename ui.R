@@ -23,6 +23,7 @@ uiLogin <- function(req){
                                  <li>Contineous updating plot</li>
                                  <li>Google analytics</li>
                                  <li>Play an audio file</li>
+                                 <li>Busy indicator</li>
                                </ul>")
                           )
         )),
@@ -54,6 +55,9 @@ uiNormal <- function(req){
         hr(),
         actionButton("playSound", "Play song"),
         actionButton("stopSound", "Stop song"),
+        actionButton("showProgress", "Show in progress"),
+        p(),
+        div(class = "busy", p("In progress.."), img(src="loader.gif")),
         width = 3
       ),
       

@@ -134,5 +134,8 @@ shinyServer(function(input, output, session) {
     enable("playSound")
     js$stopMusic()
   })
+  observeEvent(input$showProgress, {
+    Sys.sleep(5)
+  })
   
 })
