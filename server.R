@@ -31,6 +31,7 @@ shinyServer(function(input, output, session) {
     }
   })
   
+  # Output the main content panel
   output$content = renderUI(
     ifelse(USER$Logged, uiNormal(), uiLogin())
   )
@@ -125,5 +126,13 @@ shinyServer(function(input, output, session) {
     hist(rnorm(10), xlab = "Value", main = "Histogram of a random normal distribution with 10 observations")
   })
   
+  observeEvent(input$playSound, {
+    disable("playSound")
+    js$playMusic()
+  })
+  observeEvent(input$stopSound, {
+    enable("playSound")
+    js$stopMusic()
+  })
   
 })

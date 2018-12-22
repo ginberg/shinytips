@@ -2,7 +2,7 @@ source("global.R")
 
 df <- read.csv("life_exp.csv", stringsAsFactors = FALSE)
 
-uiLogin <- function(){
+uiLogin <- function(req){
   tagList(
     fluidRow(
       column(12,
@@ -22,6 +22,7 @@ uiLogin <- function(){
                                  <li>Download functionality</li>
                                  <li>Contineous updating plot</li>
                                  <li>Google analytics</li>
+                                 <li>Play an audio file</li>
                                </ul>")
                           )
         )),
@@ -41,7 +42,7 @@ uiLogin <- function(){
 }
 
 # Sidebar with a slider input for number of bins
-uiNormal <- function(){
+uiNormal <- function(req){
   tagList(
     sidebarLayout(
       sidebarPanel(
@@ -50,6 +51,9 @@ uiNormal <- function(){
         sliderInput("life_exp_m", "Life expectancy male:", min = min(df$male), max = max(df$male), value = c(min(df$male), 60)),
         sliderInput("life_exp_f", "Life expectancy female:", min = min(df$female), max = max(df$female), value = c(min(df$female), 60)),
         checkboxInput("showDataTab", "Show DataTable Tab", TRUE),
+        hr(),
+        actionButton("playSound", "Play song"),
+        actionButton("stopSound", "Stop song"),
         width = 3
       ),
       
@@ -72,10 +76,12 @@ shinyUI(fluidPage(
   tags$head(
     tags$link(rel="stylesheet", type="text/css",href="style.css"),
     tags$script(type="text/javascript", src = "md5.js"),
+    tags$script(type="text/javascript", src = "busy.js"),
     tags$script(type="text/javascript", src = "passwdInputBinding.js"),
     tags$script(type="text/javascript", src = "google-analytics.js")
   ),
   useShinyjs(),
+  extendShinyjs(script = "www/sound.js", functions = c("playMusic", "stopMusic")),
   HTML("<!-- common header-->
              <div id='headerSection'>
              <h1 style='color:white;'>Shiny tips&trics</h1>
@@ -85,9 +91,8 @@ shinyUI(fluidPage(
              &bull;
              <span>April 2017</span>
              &bull;
-             <a href='http://gerinberg.com/shiny'>More apps</a> by Ger
+             <a href='http://shiny.gerinberg.com'>More apps</a> by Ger
              </span>
              </div>"),
   div(titlePanel("Shiny tips & tricks"), align = "center"),
-  uiOutput("content")
-))
+  uiOutput("content")))

@@ -22,4 +22,4 @@ This application contains functionality and patterns that I am using frequently 
 The dataset contains the life expectanncy of males and females in different countries in the world. It is based on babies that are born in 2015. I downloaded the dataset from
 [wikipedia](https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy)
 
-Please let me know if you have questions or tips for me:-)
+Please let me know if you have any questions or recommendations for improvement!
